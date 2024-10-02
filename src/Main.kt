@@ -10,11 +10,7 @@ suspend fun main() {
 
     streamsCombine(firstFlow,secondFlow,thirdFlow).collect { it -> println(it) }
 
-
-
-
 }
-
 
 fun <T,V,C> streamsCombine(first: Flow<T>, second: Flow<V>, third: Flow<C>): Flow<Person> {
 
@@ -23,7 +19,6 @@ fun <T,V,C> streamsCombine(first: Flow<T>, second: Flow<V>, third: Flow<C>): Flo
 
     return combinedFlow
 }
-
 
 fun getPass(length: Int): MutableList<String>{
     val passArray:MutableList<String> = mutableListOf()
