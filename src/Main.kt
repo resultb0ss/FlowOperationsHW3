@@ -18,10 +18,10 @@ suspend fun main() {
 
 fun <T,V,C> streamsCombine(first: Flow<T>, second: Flow<V>, third: Flow<C>): Flow<Person> {
 
-    val combineFlow = combine(first,second,third) {name, cardNumber, cardPass ->
-        Person(name.toString(),cardNumber.toString(),cardPass.toString())}
+    val combinedFlow = first.zip(second){a,b -> Pair(a,b)}
+        .zip(third){pair, c -> Person(pair.first.toString(),pair.second.toString(),c.toString())  }
 
-    return combineFlow
+    return combinedFlow
 }
 
 
